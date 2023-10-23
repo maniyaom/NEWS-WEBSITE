@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .main {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(128, 128, 128, 0.39);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        form>span {
+            display: block;
+            margin: auto;
+            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .inputFields {
+            width: 98%;
+            height: 49px;
+            padding: 20px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: none;
+            outline: none;
+            background-color: #eeeeee;
+        }
+
+        #messageBox {
+            padding: 12px 15px;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            background-color: #eeeeee;
+        }
+
+        .btn {
+            width: 100%;
+            height: 43px;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            border: none;
+            background-color: rgb(254, 64, 102);
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: rgb(212, 28, 64);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <span>Contact Us</span>
+            <input type="text" name="fname" id="fname" class="inputFields" placeholder="First Name" required>
+            <input type="text" name="lname" id="lname" class="inputFields" placeholder="Last Name" required>
+            <input type="text" name="title" id="title" class="inputFields" placeholder="Title" required>
+            <input type="email" name="email" id="email" class="inputFields" placeholder="Email" required>
+            <textarea name="message" id="messageBox" cols="50" rows="10" placeholder="Enter Your Message" required></textarea>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "ommaniya000@gmail.com",
+                Password : "8C621CCF7ECEB431CBA080D3F6BDA681FFC3",
+                To : 'newswebsite02@gmail.com',
+                From : "ommaniya000@gmail.com",
+                Subject : title.value,
+                Body : "First Name : "+document.getElementById("fname").value+
+                       "<br>Last Name : "+document.getElementById("lname").value+
+                       "<br>Email : "+document.getElementById("email").value+
+                       "<br>Query : "+document.getElementById("messageBox").value
+            }).then(
+                message => alert(message)
+                );
+        }
+    </script>
+</body>
+
+</html>
